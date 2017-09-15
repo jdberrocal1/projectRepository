@@ -1,6 +1,5 @@
 <template>
   <div>
-    <appHeader></appHeader>
     <div class="container-fluid">
       <transition name="slide" mode="out-in">
         <router-view></router-view>
@@ -10,11 +9,8 @@
 </template>
 
 <script>
-import header from './components/header.vue';
 export default {
-  components: {
-    appHeader: header
-  }
+
 }
 </script>
 
