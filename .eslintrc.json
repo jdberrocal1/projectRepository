@@ -1,0 +1,65 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn"
+    },
+    "extends": [
+        "standard",
+        "plugin:vue/recommended"
+    ],
+    "settings": {
+        "html/html-extensions": [
+            ".html"
+        ],
+        "html/report-bad-indent": "error"
+    },
+    // required to lint *.vue files
+    "plugins": [
+        "html"
+    ],
+    "eslint.enable": true,
+    "eslint.options": {
+    "extensions": [
+      ".html",
+      ".js",
+      ".vue",
+      ".jsx"
+      ]
+    },
+    "eslint.validate": [{
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    }
+    ],
+    "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true
+}
