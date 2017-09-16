@@ -5,7 +5,7 @@
       <form class="login-form" novalidate>
         <input type="email" placeholder="Email" v-model="credentials.email" v-validate="{ rules: { required: true, email: true } }"/>
         <input type="password" placeholder="Password" v-model="credentials.password" v-validate="{ rules: { required: true } }"/>
-        <p v-if="failedLogin">Email or Password incorrect!</p>
+        <p v-if="failedLogin" class="failedLogin">Email or Password incorrect!</p>
         <button @click="login" :disabled="isFormInvalid" class="btn">login</button>
       </form>
     </div>
@@ -47,6 +47,7 @@ export default {
 
         this.$store.dispatch('setLoggedUser', loggedUser);
         this.credentials = {};
+        this.$router.push({path: '/main'})
       } else {
         this.failedLogin = true;
         this.credentials.password = '';
@@ -59,7 +60,7 @@ export default {
 
 <style>
 .login-page {
-  width: 100%;
+  width: 95%;
   padding: 50% 0 0;
   margin: auto;
 }
@@ -107,6 +108,11 @@ export default {
 
 .form button:hover {
   color: white
+}
+
+.failedLogin {
+  color: red;
+  text-align: left;
 }
 
 </style>

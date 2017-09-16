@@ -2,7 +2,6 @@
     <div >
         <appHeader></appHeader>
         <h1>Project List</h1>
-        <router-view></router-view>
     </div>
 </template>
 

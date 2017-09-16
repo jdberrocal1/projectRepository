@@ -4,12 +4,12 @@ const state = {
     users: [
         {
             name: 'Daniel Berrocal',
-            email: 'jdanielb1992@test.com',
+            email: 'jdanielb1992@gmail.com',
             password: '123456abC'
         },
         {
             name: 'Test Test',
-            email: 'test@gmail.com',
+            email: 'test@test.com',
             password: 'test'
         }
     ],

@@ -23,9 +23,10 @@
           </router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-           <router-link to="/login" tag="li">
+           <router-link to="/login" tag="li" v-if="!isUserLogged">
             <a>Login</a>
           </router-link>
+          <li v-else @click="logOut"><a>{{loggedUser.name}} - Logout</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -37,6 +38,14 @@
 <script>
 
 export default {
+   computed:{
+    loggedUser(){
+      return this.$store.getters.loggedUser;
+    },
+    isUserLogged() {
+      return this.$store.getters.isUserLogged;
+    }
+  },
   data() {
     return {
       isDropdownOpen: false,
@@ -44,7 +53,9 @@ export default {
     }
   },
   methods:{
-
+    logOut() {
+      this.$store.dispatch('logout');
+    }
   }
 
 }
