@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
         </button>        
         <router-link to='/' class="navbar-brand">
-          Project Repository
+          Avantica Project Repository
         </router-link>
       </div>
 
@@ -18,8 +18,8 @@
           <router-link to="/portfolio" activeClass="active" tag="li">
             <a>Projects</a>
           </router-link>
-          <router-link to="/stocks" activeClass="active" tag="li">
-            <a>Stocks</a>
+          <router-link to="/stocks" activeClass="active" tag="li" v-if="isUserLogged">
+            <a>Add Project</a>
           </router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">

@@ -1,7 +1,10 @@
 <template>
-    <div >
+    <div>
         <appHeader></appHeader>
-        <h1>Project List</h1>
+        <div class="container">
+          <h2>Project List</h2>
+          <h5>This will be empty for a while</h5>
+        </div>
     </div>
 </template>
 
