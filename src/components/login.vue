@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <div class="form">
-      <img src="./../assets/logo-avantica-dark.png" alt="Avantica" width="60%">
+      <img src="./../assets/logo.png" alt="Avantica" width="60%">
       <form class="login-form" novalidate>
         <input type="email" placeholder="Email" v-model="credentials.email" v-validate="{ rules: { required: true, email: true } }"/>
         <input type="password" placeholder="Password" v-model="credentials.password" v-validate="{ rules: { required: true } }"/>
