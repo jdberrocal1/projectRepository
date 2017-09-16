@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <appHeader></appHeader>
-    <div class="container" v-if="!projects.length">
+    <div class="container-fluid" v-if="!projects.length">
       <h2 class="noProjectsMsg">There is no proyects yet, to add please login and click on add project</h2>
     </div>
     <div class="container-fluid">
