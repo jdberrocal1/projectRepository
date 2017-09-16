@@ -1,12 +1,15 @@
 <template>
-    <div>
-        <appHeader></appHeader>
-        <div class="container">
-          <h2>Project List</h2>
-          <h5>This will be empty for a while</h5>
-        </div>
-        <appProjectPreview v-for="project in projects" :project="project"></appProjectPreview>
+  <div class="main">
+    <appHeader></appHeader>
+    <div class="container" v-if="!projects.length">
+      <h2 class="noProjectsMsg">There is no proyects yet, to add please login and click on add project</h2>
     </div>
+    <div class="container-fluid">
+      <div class="row">
+        <appProjectPreview v-for="project in projects" :project="project"></appProjectPreview>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,6 +28,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .noProjectsMsg {
+    margin-top: 0;
+    text-align: center;
+  }
 
+  .container-fluid {
+    margin-top: 60px;
+  }
+
+  .main {
+    padding-bottom: 20px;
+  }
 </style>

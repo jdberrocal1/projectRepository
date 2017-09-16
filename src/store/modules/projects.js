@@ -5,7 +5,7 @@ const state = {
     {
       id: 1,
       title: 'React Native Developer',
-      description: 'React Native Developer',
+      description: 'React Native Developer who performs maintenance and provides technical assistance and advice on existing software solutions.',
       minimumPosition: 'Software Engineer II',
       maximumPosition: 'Senior Software Engineer',
       yearsOfExperience: '',
@@ -96,6 +96,30 @@ const state = {
         ],
         softSkills: []
       }
+    },
+    {
+      id: 3,
+      title: 'Front End Developer',
+      mainTechnology: 'JavaScript',
+      description: 'As a Software Developer on our team you will be expected to write great code, execute on your ideas, generate new and improved approaches to software development, and generally make things better.Specifically, you’ll be responsible for designing, developing, testing, deploying and maintaining our products and our customers’ projects. Communication, influence and passion are key to the success of the team and ultimately the company.'
+    },
+    {
+      id: 4,
+      title: '.Net Full Stack Developer',
+      mainTechnology: 'C#',
+      description: 'Since 2008, we have been helping clients across the globe to imagine, engineer and deliver software solutions as well as digital experiences empowering them to be more innovative and competitive. We are doing so by taking into consideration it is not only about what we do, it is about who we are and how we do it. With you.'
+    },
+    {
+      id: 5,
+      title: 'VueJS Developer',
+      mainTechnology: 'VueJS',
+      description: 'ArVum IT is seeking a Jr VueJS Developer for our core development team. (0 – 2 years experience).'
+    },
+    {
+      id: 6,
+      title: 'UX Developer',
+      mainTechnology: 'HTML5 - CSS3',
+      description: 'Dynamic, passionate and proven people who want to make a positive difference with the people they work with and customers we support. You will have the ability to thrive in a fast-paced and challenging environment where everyone is empowered and committed to deliver the best in industry customer experience. Fluency in English (written and spoken) is a given, as is a ‘can do’ attitude and a thirst to learn and develop professional and soft skills.'
     }
   ]
 };
