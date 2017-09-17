@@ -9,7 +9,7 @@ const state = {
       minimumPosition: 'Software Engineer II',
       maximumPosition: 'Senior Software Engineer',
       yearsOfExperience: '',
-      englishLeves: 'B2',
+      englishLevel: 'B2',
       mainTechnology: 'Reatc Native',
       status: 'open',
       date:'16/09/2017',
@@ -52,7 +52,7 @@ const state = {
       minimumPosition: 'Software Engineer III',
       maximumPosition: 'Senior Software Engineer',
       yearsOfExperience: '5',
-      englishLeves: 'B2',
+      englishLevel: 'C1',
       mainTechnology: 'Java',
       status: 'open',
       date:'10/09/2017',
@@ -96,6 +96,7 @@ const state = {
       id: 3,
       title: 'Front End Developer',
       mainTechnology: 'JavaScript',
+      englishLevel: 'B2',
       mandatoryKnowledge: {
         hardSkills: [
           'React',
@@ -116,6 +117,7 @@ const state = {
       id: 4,
       title: '.Net Full Stack Developer',
       mainTechnology: 'C#',
+      englishLevel: 'B2',
       mandatoryKnowledge: {
         hardSkills: [
           'EF',
@@ -136,6 +138,7 @@ const state = {
       id: 5,
       title: 'VueJS Developer',
       mainTechnology: 'VueJS',
+      englishLevel: 'C2',
       mandatoryKnowledge: {
         hardSkills: [
           'Javascript',
@@ -154,6 +157,7 @@ const state = {
       id: 6,
       title: 'UX Designer',
       mainTechnology: 'HTML5 - CSS3',
+      englishLevel: 'B1',
       mandatoryKnowledge: {
         hardSkills: [
           'Adove PS',

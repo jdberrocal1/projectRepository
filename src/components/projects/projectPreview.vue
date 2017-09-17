@@ -3,14 +3,17 @@
     <div class="container-fluid previewContainer">
       <div><h3 class="ellipsis">{{project.title}}</h3></div>
       <div class="body">
-        <h4>{{project.mainTechnology}}</h4>
+        <h4>{{project.mainTechnology}} - {{project.englishLevel}}</h4>
         <p class="description ellipsis">{{project.description}}</p>
       </div>
       <div class="row techs">
         <div class="col-xs-6 tech" v-for="(tech, index) in skills" :class="[index % 2 === 1 ? 'techRight': 'techLeft']"><p class="ellipsis">{{tech}}</p></div>
       </div>
       <div class="footer">
-        <button class="btn-review">View More</button>
+        <!-- <button class="btn-review">View More</button> -->
+        <router-link :to="{name: 'projectDetail', params: { id: project.id }}" class="btn-review" tag="button">
+            View More
+          </router-link>
       </div>
     </div>
 
