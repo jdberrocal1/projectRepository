@@ -15,7 +15,7 @@
 
       <div class="collapse navbar-collapse" :class="{'in': showMenu}">
         <ul class="nav navbar-nav">
-          <router-link to="/portfolio" activeClass="active" tag="li">
+          <router-link to="/" activeClass="active" tag="li">
             <a>Projects</a>
           </router-link>
           <router-link to="/stocks" activeClass="active" tag="li" v-if="isUserLogged">

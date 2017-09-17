@@ -68,14 +68,9 @@ const state = {
       ],
       mandatoryKnowledge: {
         hardSkills: [
-          '5+ years experience developing software applications, services and libraries using Java.',
-          'A passion for developing and continuously improving high quality, maintainable software',
-          'Experience with REST API, Tomcat (or similar Web/Application servers), OOP, Design Patterns, TDD, and Agile development practices.',
-          'Experience developing high-tolerance, secure and performant enterprise level applications with Open Source and custom components.',
-          'Responsible for software development and delivery, API design, requirements gathering/clarification, unit and integration tests.',
-          'Ability to work independently while possessing strong communication skills and passion for collaborating with product managers, subject matter experts and other developers.',
-          'Solution-oriented and willing to challenge existing assumptions and best practices/approaches in solving customer pain points.',
-          'S. or B.A. in Computer Science, a similar field or equivalent additional relevant technical experience'
+          'Mongo',
+          'Spring',
+          'Kafka'
         ],
         softSkills: [
           'Good on communication',
@@ -101,24 +96,75 @@ const state = {
       id: 3,
       title: 'Front End Developer',
       mainTechnology: 'JavaScript',
+      mandatoryKnowledge: {
+        hardSkills: [
+          'React',
+          'Angular',
+          'VueJS',
+          'Git',
+          'Maven',
+          'Jenkins'
+        ],
+        softSkills: [
+          'Good on communication',
+          'Pro active'
+        ]
+      },
       description: 'As a Software Developer on our team you will be expected to write great code, execute on your ideas, generate new and improved approaches to software development, and generally make things better.Specifically, you’ll be responsible for designing, developing, testing, deploying and maintaining our products and our customers’ projects. Communication, influence and passion are key to the success of the team and ultimately the company.'
     },
     {
       id: 4,
       title: '.Net Full Stack Developer',
       mainTechnology: 'C#',
+      mandatoryKnowledge: {
+        hardSkills: [
+          'EF',
+          'Azure',
+          'SQL',
+          'WCF',
+          'Maven',
+          'Jenkins'
+        ],
+        softSkills: [
+          'Good on communication',
+          'Pro active'
+        ]
+      },
       description: 'Since 2008, we have been helping clients across the globe to imagine, engineer and deliver software solutions as well as digital experiences empowering them to be more innovative and competitive. We are doing so by taking into consideration it is not only about what we do, it is about who we are and how we do it. With you.'
     },
     {
       id: 5,
       title: 'VueJS Developer',
       mainTechnology: 'VueJS',
+      mandatoryKnowledge: {
+        hardSkills: [
+          'Javascript',
+          'Vuex',
+          'NodeJS',
+          'AWS'
+        ],
+        softSkills: [
+          'Good on communication',
+          'Pro active'
+        ]
+      },
       description: 'ArVum IT is seeking a Jr VueJS Developer for our core development team. (0 – 2 years experience).'
     },
     {
       id: 6,
-      title: 'UX Developer',
+      title: 'UX Designer',
       mainTechnology: 'HTML5 - CSS3',
+      mandatoryKnowledge: {
+        hardSkills: [
+          'Adove PS',
+          'Sketch',
+          'InVision'
+        ],
+        softSkills: [
+          'Good on communication',
+          'Pro active'
+        ]
+      },
       description: 'Dynamic, passionate and proven people who want to make a positive difference with the people they work with and customers we support. You will have the ability to thrive in a fast-paced and challenging environment where everyone is empowered and committed to deliver the best in industry customer experience. Fluency in English (written and spoken) is a given, as is a ‘can do’ attitude and a thirst to learn and develop professional and soft skills.'
     }
   ]
