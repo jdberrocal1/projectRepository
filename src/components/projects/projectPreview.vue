@@ -7,7 +7,7 @@
         <p>{{project.description}}</p>
       </div>
       <div class="footer">
-        <button class="btn-review pull-right">View More</button>
+        <button class="btn-review">View More</button>
       </div>
     </div>
 
@@ -37,12 +37,14 @@
   }
 
   .previewContainer .footer {
-    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
   }
 
   .previewContainer .body {
     text-align: justify;
-    max-height: 100px;
+    max-height: 110px;
     overflow: hidden;
     margin-bottom: 10px;
   }
