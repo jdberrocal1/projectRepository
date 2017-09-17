@@ -1,13 +1,19 @@
 <template>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <div class="container-fluid previewContainer">
-      <div><h3>{{project.title}}</h3></div>
+      <div><h3 class="ellipsis">{{project.title}}</h3></div>
       <div class="body">
-        <h4>{{project.mainTechnology}}</h4>
-        <p>{{project.description}}</p>
+        <h4>{{project.mainTechnology}} - {{project.englishLevel}}</h4>
+        <p class="description ellipsis">{{project.description}}</p>
+      </div>
+      <div class="row techs">
+        <div class="col-xs-6 tech" v-for="(tech, index) in skills" :class="[index % 2 === 1 ? 'techRight': 'techLeft']"><p class="ellipsis">{{tech}}</p></div>
       </div>
       <div class="footer">
-        <button class="btn-review">View More</button>
+        <!-- <button class="btn-review">View More</button> -->
+        <router-link :to="{name: 'projectDetail', params: { id: project.id }}" class="btn-review" tag="button">
+            View More
+          </router-link>
       </div>
     </div>
 
@@ -16,7 +22,15 @@
 
 <script>
   export default {
-    props: ['project']
+    props: ['project'],
+    computed:{
+      skills(){
+        if(this.project.mandatoryKnowledge && this.project.mandatoryKnowledge.hardSkills) {
+          return this.project.mandatoryKnowledge.hardSkills.length > 4 ? this.project.mandatoryKnowledge.hardSkills.slice(0,4) : this.project.mandatoryKnowledge.hardSkills;
+        }
+        return [];
+      }
+    }
   }
 </script>
 
@@ -39,7 +53,12 @@
   .previewContainer .footer {
     position: absolute;
     bottom: 20px;
-    right: 30px;
+    right: 15px;
+    margin-top: 10px;
+  }
+
+  .previewContainer .techs {
+    margin-bottom: 10px;
   }
 
   .previewContainer .body {
@@ -47,6 +66,37 @@
     max-height: 110px;
     overflow: hidden;
     margin-bottom: 10px;
+  }
+
+  .previewContainer .tech > p{
+    text-align: center;
+    background-color: #EF4023;
+    min-height: 22px;
+  }
+
+  .previewContainer .techLeft {
+    padding-left: 0;
+    padding-right: 5px;
+  }
+
+  .previewContainer .techLeft > p{
+    border-radius: 0 10px 10px 0;
+  }
+
+  .previewContainer .techRight {
+    padding-right: 0;
+    padding-left: 5px;
+  }
+
+  .previewContainer .techRight > p{
+    border-radius: 10px 0 0 10px;
+  }
+
+   .previewContainer .ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .btn-review {

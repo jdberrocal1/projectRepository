@@ -47,7 +47,7 @@ export default {
 
         this.$store.dispatch('setLoggedUser', loggedUser);
         this.credentials = {};
-        this.$router.push({path: '/main'})
+        this.$router.push({path: '/main'});
       } else {
         this.failedLogin = true;
         this.credentials.password = '';

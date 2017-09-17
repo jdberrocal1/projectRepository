@@ -8,14 +8,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>        
-        <router-link to='/' class="navbar-brand">
+        <router-link to='/main' class="navbar-brand">
           Avantica Project Repository
         </router-link>
       </div>
 
       <div class="collapse navbar-collapse" :class="{'in': showMenu}">
         <ul class="nav navbar-nav">
-          <router-link to="/portfolio" activeClass="active" tag="li">
+          <router-link to="/main/" activeClass="active" tag="li">
             <a>Projects</a>
           </router-link>
           <router-link to="/stocks" activeClass="active" tag="li" v-if="isUserLogged">
