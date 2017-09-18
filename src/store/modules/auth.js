@@ -8,7 +8,7 @@ const state = {
             password: '123456abC'
         },
         {
-            name: 'Test Test',
+            name: 'User Test',
             email: 'test@test.com',
             password: 'test'
         }
