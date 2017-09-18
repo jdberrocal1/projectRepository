@@ -1,13 +1,17 @@
 <template>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <div class="container-fluid previewContainer">
-      <div><h3 class="ellipsis">{{project.title}}</h3></div>
+      <div><h3 class="ellipsis title">{{project.title}}</h3></div>
       <div class="body">
         <h4>{{project.mainTechnology}} - {{project.englishLevel}}</h4>
         <p class="description ellipsis">{{project.description}}</p>
       </div>
       <div class="row techs">
-        <div class="col-xs-6 tech" v-for="(tech, index) in skills" :class="[index % 2 === 1 ? 'techRight': 'techLeft']"><p class="ellipsis">{{tech}}</p></div>
+        <div class="col-xs-6 techs-box">
+          <ul>
+            <li v-for="(tech, index) in skills">{{tech}}</li>
+          </ul>
+        </div>
       </div>
       <div class="footer">
         <!-- <button class="btn-review">View More</button> -->
@@ -26,7 +30,7 @@
     computed:{
       skills(){
         if(this.project.mandatoryKnowledge && this.project.mandatoryKnowledge.hardSkills) {
-          return this.project.mandatoryKnowledge.hardSkills.length > 4 ? this.project.mandatoryKnowledge.hardSkills.slice(0,4) : this.project.mandatoryKnowledge.hardSkills;
+          return this.project.mandatoryKnowledge.hardSkills.length > 3 ? this.project.mandatoryKnowledge.hardSkills.slice(0,3) : this.project.mandatoryKnowledge.hardSkills;
         }
         return [];
       }
@@ -46,6 +50,10 @@
     width: 100%;
   }
 
+  .previewContainer .title {
+    color: #EF4023;
+  }
+
   .previewContainer h3, .previewContainer h4 {
     margin-top: 0;
   }
@@ -57,10 +65,6 @@
     margin-top: 10px;
   }
 
-  .previewContainer .techs {
-    margin-bottom: 10px;
-  }
-
   .previewContainer .body {
     text-align: justify;
     max-height: 110px;
@@ -68,28 +72,15 @@
     margin-bottom: 10px;
   }
 
-  .previewContainer .tech > p{
-    text-align: center;
-    background-color: #EF4023;
-    min-height: 22px;
+    .previewContainer .techs {
+    margin-bottom: 10px;
   }
 
-  .previewContainer .techLeft {
-    padding-left: 0;
-    padding-right: 5px;
-  }
-
-  .previewContainer .techLeft > p{
+  .techs .techs-box {
     border-radius: 0 10px 10px 0;
-  }
-
-  .previewContainer .techRight {
-    padding-right: 0;
-    padding-left: 5px;
-  }
-
-  .previewContainer .techRight > p{
-    border-radius: 10px 0 0 10px;
+    border: 2px solid #EF4023;
+    border-left: 0;
+    padding-top: 10px;
   }
 
    .previewContainer .ellipsis {
