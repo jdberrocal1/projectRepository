@@ -1,18 +1,4 @@
-
-
 const state = {
-    users: [
-        {
-            name: 'Daniel Berrocal',
-            email: 'jdanielb1992@gmail.com',
-            password: '123456abC'
-        },
-        {
-            name: 'User Test',
-            email: 'test@test.com',
-            password: 'test'
-        }
-    ],
     loggedUser: {},
     isUserLogged: false
 };
@@ -40,9 +26,6 @@ const actions = {
 const getters = {
     loggedUser: state => {
         return state.loggedUser;
-    },
-    users: state => {
-        return state.users;
     },
     isUserLogged: state => {
         return state.isUserLogged;

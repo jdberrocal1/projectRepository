@@ -2,11 +2,12 @@ import home from './components/home.vue';
 import login from './components/login.vue';
 import projectList from './components/projects/projectList.vue'
 import projectDetail from './components/projects/projectDetail.vue'
+import importProject from './components/projects/importProject.vue'
 import store from './store/store';
 
 export const routes = [
   {
-    path: '/main',
+    path: '/projects',
     component: home,
     children: [
       {
@@ -18,6 +19,14 @@ export const routes = [
         component: projectDetail,
         name: 'projectDetail',
         props: { default: true, sidebar: false }
+      },
+      {
+        path: '/import',
+        component: importProject,
+        name: 'importProject',
+        beforeEnter: (to, from, next) => {
+          next(store.getters.isUserLogged);
+        }
       }
     ]
   },
