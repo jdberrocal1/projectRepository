@@ -39,6 +39,6 @@ export const routes = [
   },
   {
     path: '*',
-    redirect: '/main/'
+    redirect: '/projects/'
   }
 ];
