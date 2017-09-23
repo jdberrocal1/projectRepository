@@ -8,25 +8,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>        
-        <router-link to='/main' class="navbar-brand">
+        <router-link to='/projects' class="navbar-brand">
           Avantica Project Repository
         </router-link>
       </div>
 
       <div class="collapse navbar-collapse" :class="{'in': showMenu}">
         <ul class="nav navbar-nav">
-          <router-link to="/main/" activeClass="active" tag="li">
+          <router-link to="/projects/" activeClass="active" tag="li">
             <a>Projects</a>
           </router-link>
-          <router-link to="/stocks" activeClass="active" tag="li" v-if="isUserLogged">
-            <a>Add Project</a>
+          <router-link to="/import" activeClass="active" tag="li" v-if="isUserLogged">
+            <a>Import Project</a>
           </router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">
            <router-link to="/login" tag="li" v-if="!isUserLogged">
             <a>Login</a>
           </router-link>
-          <li v-else @click="logOut"><a>{{loggedUser.name}} - Logout</a></li>
+          <li v-else @click="logOut" class="click"><a>{{loggedUser.name}} - Logout</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -85,5 +85,9 @@ export default {
 
    .darkNav li>a:hover, .darkNav li>a:focus, .darkNav li.active > a,  .darkNav li.open > a {
     background-color: #EF4023;
+  }
+
+  .click {
+    cursor: pointer;
   }
 </style>

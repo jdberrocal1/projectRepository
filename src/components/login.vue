@@ -3,8 +3,8 @@
     <div class="form">
       <img src="./../assets/logo.png" alt="Avantica" width="60%">
       <form class="login-form" novalidate>
-        <input type="email" placeholder="Email" v-model="credentials.email" v-validate="{ rules: { required: true, email: true } }"/>
-        <input type="password" placeholder="Password" v-model="credentials.password" v-validate="{ rules: { required: true } }"/>
+        <input type="email" placeholder="Email" v-model="credentials.userNameOrEmail" v-validate="{ rules: { required: true, email: true } }" />
+        <input type="password" placeholder="Password" v-model="credentials.password" v-validate="{ rules: { required: true } }" />
         <p v-if="failedLogin" class="failedLogin">Email or Password incorrect!</p>
         <button @click="login" :disabled="isFormInvalid" class="btn">login</button>
       </form>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       credentials: {
-        email: '',
+        userNameOrEmail: '',
         password: ''
       },
       failedLogin: false
@@ -27,31 +27,30 @@ export default {
   computed: {
     isFormInvalid() {
       return Object.keys(this.fields).filter(key => !this.fields[key].valid).length > 0;
-    },
-    users() {
-      return this.$store.getters.users;
     }
   },
   methods: {
     login() {
       this.failedLogin = false;
-      let user = this.users.find(u => {
-        return u.password === this.credentials.password && u.email === this.credentials.email;
-      });
-      if(user) {
-        let loggedUser = {
-          password: user.password,
-          email: user.email,
-          name: user.name
-        };
-
-        this.$store.dispatch('setLoggedUser', loggedUser);
-        this.credentials = {};
-        this.$router.push({path: '/main'});
-      } else {
-        this.failedLogin = true;
-        this.credentials.password = '';
-      }
+      this.$Progress.start();
+      this.$http.post('/login', this.credentials)
+        .then(response => {
+          let data = response.body;
+          if (data && data.successful) {
+            this.$store.dispatch('setLoggedUser', data.user);
+            this.credentials = {};
+            this.$router.push({ path: '/projects' });
+          } else {
+            this.failedLogin = true; 
+            this.credentials.password = '';
+          }
+          this.$Progress.finish();
+        })
+        .catch(error => {
+          this.failedLogin = true; 
+          this.credentials.password = '';
+          this.$Progress.fail();
+        });
     }
   }
 
@@ -114,5 +113,4 @@ export default {
   color: red;
   text-align: left;
 }
-
 </style>
