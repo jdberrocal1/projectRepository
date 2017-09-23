@@ -15,7 +15,7 @@ export default {
   created(){
     let project = this.$store.getters.project(this.$route.params.id);
     if(!project){
-      this.$router.push({path: '/main'});
+      this.$router.push({path: '/projects'});
     }
   },
   computed: {
