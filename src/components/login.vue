@@ -53,15 +53,16 @@ export default {
         });
     }
   }
-
 }
 </script>
 
 <style>
 .login-page {
-  width: 95%;
-  padding: 50% 0 0;
+  width: 100%;
   margin: auto;
+  position: fixed;
+  top: 30%;
+  padding: 0 10px;
 }
 
 .form {
@@ -113,4 +114,6 @@ export default {
   color: red;
   text-align: left;
 }
+
+
 </style>
