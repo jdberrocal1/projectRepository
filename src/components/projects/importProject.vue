@@ -22,35 +22,26 @@
 export default {
   data(){
     return {
-      ticketNumer:'SANDBOXS-837'
+      ticketNumer:''
     }
   },
   methods:{
     importProject(){
       if(this.ticketNumer.length){
-        // this.$Progress.start();
-        // const requestConfig = {
-        //   headers: {
-        //     Authorization: 'Basic amJlcnJvY2FsLWFzOmRhbmllbDIwMTA=='
-        //     // 'Accept': 'application/json',
-        //     // 'Content-Type': 'application/json',
-        //     // 'Access-Control-Allow-Origin':'*',
-        //     // 'Access-Control-Allow-Headers': 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin'
-        //   }
-        // };
-        // this.$http.get('https://jira.avantica.net:7443/rest/api/2/issue/' + this.ticketNumer + '/editmeta')
-        //   .then(response => {
-        //     let data = response.body;
-        //     if (data && data.successful) {
-        //       console.log(data);
-        //     } else {
-        //     }
-        //     this.$Progress.finish();
-        //   })
-        //   .catch(error => {
-        //     console.log(error);
-        //     this.$Progress.fail();
-        //   });
+        this.$Progress.start();
+        this.$http.get('/import/' + this.ticketNumer)
+          .then(response => {
+            let data = response.body;
+            if (data && data.successful) {
+              console.log(data);
+            } else {
+            }
+            this.$Progress.finish();
+          })
+          .catch(error => {
+            console.log(error);
+            this.$Progress.fail();
+          });
       }
     }
   }
