@@ -14,5 +14,7 @@ export default {
 </script>
 
 <style>
-
+  .justifyText{
+    text-align: justify;
+  }
 </style>

@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .noProjectsMsg {
   margin-top: 0;
   text-align: center;

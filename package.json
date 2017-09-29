@@ -12,6 +12,7 @@
     "body-parser": "~1.0.0",
     "bootstrap": "^3.3.7",
     "express": "~4.0.0",
+    "request": "^2.82.0",
     "vee-validate": "^2.0.0-rc.17",
     "vue": "^2.0.1",
     "vue-progressbar": "^0.7.3",
