@@ -17,4 +17,22 @@ export default {
   .justifyText{
     text-align: justify;
   }
+
+  .btn {
+    border-radius: 0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btn:hover, .btn:active, .btn:active, .btn:focus {
+    color: white;
+  }
+
+  .btn.success{
+    background-color: #2F2D46;
+  }
+
+  .btn.cancel{
+    background-color: #EF4023;
+  }
 </style>
