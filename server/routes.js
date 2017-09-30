@@ -1,15 +1,9 @@
-require('./users');
 var request = require("request");
-
-function findUser(credentials) {
-  return users.find(u => {
-    return u.password === credentials.password && (u.userName === credentials.userNameOrEmail || u.email === credentials.userNameOrEmail);
-  });
-}
+var utils = require('./utils');
 
 module.exports = function (app) {
   app.post('/login', function (req, res) {
-    let user = findUser(req.body);
+    let user = utils.findUser(req.body);
     if (user) {
       let loginSuccessful = {
         user: {
@@ -36,10 +30,14 @@ module.exports = function (app) {
       },
       uri: url,
       method: "GET"
-    }, function(error, response, body) {
-      res.json({ ticket: JSON.parse(body) });
+    }, function (error, response, body) {
+      if (error) {
+        res.json(null);
+      }
+      let data = JSON.parse(body);
+      res.json(utils.getTicketData(data));
     });
-    
+
   });
 
 };
