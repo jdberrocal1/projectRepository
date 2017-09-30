@@ -75,7 +75,7 @@ export default {
     importProject() {
       if (this.ticketNumer.length) {
         this.$Progress.start();
-        this.$http.get('http://localhost:5000/import/' + this.ticketNumer)
+        this.$http.get('/import/' + this.ticketNumer)
           .then(response => {
             let data = response.body;
             if (data) {
