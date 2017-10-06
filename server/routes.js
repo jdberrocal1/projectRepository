@@ -1,5 +1,6 @@
 var request = require("request");
 var utils = require('./utils');
+var firebaseActions = require('./firebase.actions');
 
 module.exports = function (app) {
   app.post('/login', function (req, res) {
@@ -37,7 +38,19 @@ module.exports = function (app) {
       let data = JSON.parse(body);
       res.json(utils.getTicketData(data));
     });
+  });
 
+  app.post('/import', function (req, res) {
+    let project = req.body;
+    let savedProjects = firebaseActions.getProjects();
+    //let projectExist = savedProjects.indexOf(project.id) >= 0; // change this to return a promise
+    if (project){ //&& !projectExist) {
+      firebaseActions.saveProjectId(project, error => {
+        res.json(!!error);
+      })
+    } else {
+      res.json('Project already exists!');
+    }
   });
 
 };
