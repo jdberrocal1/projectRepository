@@ -1,4 +1,8 @@
 module.exports = {
+  jiraCredentials: {
+    username: 'jirascpoc',
+    password: 'avantica#'
+  },
   users: [
     {
       name: 'Admin',
