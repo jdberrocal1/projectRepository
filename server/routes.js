@@ -42,15 +42,23 @@ module.exports = function (app) {
 
   app.post('/import', function (req, res) {
     let project = req.body;
-    let savedProjects = firebaseActions.getProjects();
-    //let projectExist = savedProjects.indexOf(project.id) >= 0; // change this to return a promise
-    if (project){ //&& !projectExist) {
-      firebaseActions.saveProjectId(project, error => {
-        res.json(!!error);
-      })
-    } else {
-      res.json('Project already exists!');
-    }
+    firebaseActions.getProjects(true, function(savedProjects) {
+      let projectExist = savedProjects.indexOf(project.id) >= 0 || false;
+      let result = {
+        haveErrors: true,
+        message: ''
+      };
+      if (project && !projectExist) {
+        firebaseActions.saveProjectId(project, error => {
+          result.haveErrors = !!error;
+          result.message = 'Project Saved Successfully';
+          res.json(result);
+        });
+      } else {
+        result.message = 'Project already exists';
+        res.json(result);
+      }
+    });
   });
 
 };

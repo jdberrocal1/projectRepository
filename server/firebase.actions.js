@@ -12,7 +12,8 @@ function saveProjectId(project, callback) {
   });
 }
 
-function parseProjectList(projects){
+function parseProjectList(projects) {
+  if (!projects) return [];
   let projectListParse = [];
   Object.keys(projects).forEach(key => {
     projectListParse.push(projects[key].id);
@@ -20,10 +21,13 @@ function parseProjectList(projects){
   return projectListParse;
 }
 
-function getProjects(project, callback) {
+function getProjects(firstCall, callback) {
   let projects = db.ref("projects");
-  return projects.on("value", function(snapshot) {
-    return parseProjectList(snapshot.val());
+  projects.once("value", function(snapshot) {
+     if(firstCall){
+       callback(parseProjectList(snapshot.val()));
+       firstCall = false;
+      }
   }, function (errorObject) {
     return [];
   });

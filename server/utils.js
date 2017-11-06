@@ -20,22 +20,22 @@ function findUser(credentials) {
   
   function getTicketData(ticket) {
     return {
-      minPosition: getPositionById(ticket.fields.customfield_10172),
-      maxPosition: getPositionById(ticket.fields.customfield_10173),
-      yearsOfExperience: ticket.fields.customfield_10143,
-      englishLevel: getEnglishLevelById(ticket.fields.customfield_10174),
-      mainTechnology: getTechnologyById(ticket.fields.customfield_10175),
-      requirements: ticket.fields.customfield_10145,
+      minPosition: getPositionById(ticket.fields.customfield_10172) || '',
+      maxPosition: getPositionById(ticket.fields.customfield_10173) || '',
+      yearsOfExperience: ticket.fields.customfield_10143 || '',
+      englishLevel: getEnglishLevelById(ticket.fields.customfield_10174) || '',
+      mainTechnology: getTechnologyById(ticket.fields.customfield_10175) || '',
+      requirements: ticket.fields.customfield_10145 || '',
       mandatoryKnowledge: {
-        hardSkills: ticket.fields.customfield_10146,
-        softSkills: ticket.fields.customfield_10147,
+        hardSkills: ticket.fields.customfield_10146 || '',
+        softSkills: ticket.fields.customfield_10147 || '',
       },
       preferableKnowledge: {
-        hardSkills: ticket.fields.customfield_10148,
-        softSkills: ticket.fields.customfield_10149,
+        hardSkills: ticket.fields.customfield_10148 || '',
+        softSkills: ticket.fields.customfield_10149 || '',
       },
-      expectedStartDate: ticket.fields.customfield_10157,
-      title: ticket.fields.summary
+      expectedStartDate: ticket.fields.customfield_10157 || '',
+      title: ticket.fields.summary || ''
     }
   }
 
