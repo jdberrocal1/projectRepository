@@ -3,7 +3,9 @@ var utils = require('./utils');
 var firebaseActions = require('./firebase.actions');
 
 module.exports = function (app) {
-  app.post('/login', function (req, res) {
+  let apiUrlBase = "/api/v1";
+
+  app.post(`${apiUrlBase}/login`, function (req, res) {
     let user = utils.findUser(req.body);
     if (user) {
       let loginSuccessful = {
@@ -20,9 +22,9 @@ module.exports = function (app) {
     }
   });
 
-  app.get('/import/:id', function (req, res) {
+  app.get(`${apiUrlBase}/import/:id`, function (req, res) {
     let ticketNumber = req.params.id;
-    let url = "https://jira7-clone-pub.avantica.net:7443/rest/api/2/issue/" + ticketNumber;
+    let url = "https://jira7-clone.avantica.net/rest/api/2/issue/" + ticketNumber;
     let auth = utils.getJiraAuthHeader();
 
     request({
@@ -36,14 +38,29 @@ module.exports = function (app) {
         res.json(null);
       }
       let data = JSON.parse(body);
+      data.id = ticketNumber;
       res.json(utils.getTicketData(data));
     });
   });
 
-  app.post('/import', function (req, res) {
+  app.get(`${apiUrlBase}/projects`, function (req, res) {
+    firebaseActions.getProjects(true, function(savedProjects) {
+        res.json(savedProjects);
+    });
+  });
+
+  app.get(`${apiUrlBase}/projects/:id`, function (req, res) {
+    let id = req.params.id;
+    firebaseActions.getProjects(true, function(savedProjects) {
+      let project = savedProjects.find(x => x.id === id);
+      res.json(project);
+    });
+  });
+
+  app.post(`${apiUrlBase}/import`, function (req, res) {
     let project = req.body;
     firebaseActions.getProjects(true, function(savedProjects) {
-      let projectExist = savedProjects.indexOf(project.id) >= 0 || false;
+      let projectExist = savedProjects.find(x => x.id === project.id);
       let result = {
         haveErrors: true,
         message: ''

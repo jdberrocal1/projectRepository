@@ -20,11 +20,14 @@ function findUser(credentials) {
   
   function getTicketData(ticket) {
     return {
+      id: ticket.id,
       minPosition: getPositionById(ticket.fields.customfield_10172) || '',
       maxPosition: getPositionById(ticket.fields.customfield_10173) || '',
       yearsOfExperience: ticket.fields.customfield_10143 || '',
       englishLevel: getEnglishLevelById(ticket.fields.customfield_10174) || '',
       mainTechnology: getTechnologyById(ticket.fields.customfield_10175) || '',
+      taskDescription: ticket.fields.customfield_10144 || '',
+      description: ticket.fields.description || '',
       requirements: ticket.fields.customfield_10145 || '',
       mandatoryKnowledge: {
         hardSkills: ticket.fields.customfield_10146 || '',

@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource';
 import VeeValidate from 'vee-validate';
 import VueProgressBar from 'vue-progressbar';
 
@@ -11,9 +10,6 @@ import store from './store/store';
 
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
-
-//http config
-Vue.use(VueResource);
 
 //progress bar config
 Vue.use(VueProgressBar, {

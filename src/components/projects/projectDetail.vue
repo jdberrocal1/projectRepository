@@ -3,25 +3,34 @@
     <h3>{{project.title}}</h3>
     <p>{{project.description}}</p>
     <p><b>Requirements: </b></p>
-    <ul>
-      <li v-for="req in project.requirements">{{req}}</li>
-    </ul>
+    <p>{{project.requirements}}</p>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { baseApi } from '../../app.constants';
 export default {
   props: ['id'],
-  created(){
-    let project = this.$store.getters.project(this.$route.params.id);
-    if(!project){
-      this.$router.push({path: '/projects'});
+  data() {
+    return {
+      project: []
     }
   },
-  computed: {
-    project() {
-      return this.$store.getters.project(this.$route.params.id);
-    }
+  created(){
+    this.$Progress.start();
+    axios.get(`${baseApi}/projects/${this.$route.params.id}`)
+        .then(response => {
+          let data = response.data;
+          this.project = data;
+          if (!project) {
+            this.$router.push({path: '/projects'});
+          }
+          this.$Progress.finish();
+        })
+        .catch(error => {
+          this.$Progress.fail();
+        });
   }
 }
 </script>

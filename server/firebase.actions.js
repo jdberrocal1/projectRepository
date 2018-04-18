@@ -5,7 +5,7 @@ function saveProjectId(project, callback) {
   let projects = db.ref("projects").push();
   return projects.set(
     {
-      id: project.id
+      project: project
     }, 
     function (error) {
       callback(error);
@@ -16,7 +16,7 @@ function parseProjectList(projects) {
   if (!projects) return [];
   let projectListParse = [];
   Object.keys(projects).forEach(key => {
-    projectListParse.push(projects[key].id);
+    projectListParse.push(projects[key].project);
   });
   return projectListParse;
 }

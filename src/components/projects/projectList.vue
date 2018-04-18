@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="row">
-        <appProjectPreview v-for="project in filteredProjects" :project="project"></appProjectPreview>
+        <appProjectPreview v-for="project in filteredProjects" :project="project" :key="project.id"></appProjectPreview>
       </div>
     </div>
   </div>
@@ -27,21 +27,34 @@
 
 <script>
 import projectPreview from './projectPreview.vue';
+import axios from 'axios';
+import { baseApi } from '../../app.constants';
+
 export default {
   data() {
     return {
-      search: ''
+      search: '',
+      projects: []
     }
   },
   computed: {
-    projects() {
-      return this.$store.getters.projects;
-    },
     filteredProjects() {
       return this.projects.filter(project => {
         return project.title.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || project.mainTechnology.toLowerCase().indexOf(this.search.toLowerCase()) > -1
       });
     }
+  },
+  created() {
+    this.$Progress.start();
+    axios.get(`${baseApi}/projects`)
+        .then(response => {
+          let data = response.data;
+          this.projects = data;
+          this.$Progress.finish();
+        })
+        .catch(error => {
+          this.$Progress.fail();
+        });
   },
   components: {
     appProjectPreview: projectPreview

@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { baseApi } from '../app.constants';
 
 export default {
   data() {
@@ -33,9 +35,10 @@ export default {
     login() {
       this.failedLogin = false;
       this.$Progress.start();
-      this.$http.post('/login', this.credentials)
+      axios.post(`${baseApi}/login`, this.credentials)
         .then(response => {
-          let data = response.body;
+          console.log(response)
+          let data = response.data;
           if (data && data.successful) {
             this.$store.dispatch('setLoggedUser', data.user);
             this.credentials = {};
