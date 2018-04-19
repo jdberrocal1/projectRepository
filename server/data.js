@@ -1,4 +1,9 @@
 module.exports = {
+  jiraCredentials: {
+    username: 'jirascpoc',
+    password: 'avantica#'
+  },
+  jiraApi: 'https://jira7-clone.avantica.net/rest/api/2/issue/',
   users: [
     {
       name: 'Admin',

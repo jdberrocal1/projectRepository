@@ -20,26 +20,39 @@ function findUser(credentials) {
   
   function getTicketData(ticket) {
     return {
-      minPosition: getPositionById(ticket.fields.customfield_10172),
-      maxPosition: getPositionById(ticket.fields.customfield_10173),
-      yearsOfExperience: ticket.fields.customfield_10143,
-      englishLevel: getEnglishLevelById(ticket.fields.customfield_10174),
-      mainTechnology: getTechnologyById(ticket.fields.customfield_10175),
-      requirements: ticket.fields.customfield_10145,
+      id: ticket.id,
+      minPosition: getPositionById(ticket.fields.customfield_10172) || '',
+      maxPosition: getPositionById(ticket.fields.customfield_10173) || '',
+      yearsOfExperience: ticket.fields.customfield_10143 || '',
+      englishLevel: getEnglishLevelById(ticket.fields.customfield_10174) || '',
+      mainTechnology: getTechnologyById(ticket.fields.customfield_10175) || '',
+      taskDescription: ticket.fields.customfield_10144 || '',
+      description: ticket.fields.description || '',
+      requirements: ticket.fields.customfield_10145 || '',
       mandatoryKnowledge: {
-        hardSkills: ticket.fields.customfield_10146,
-        softSkills: ticket.fields.customfield_10147,
+        hardSkills: ticket.fields.customfield_10146 || '',
+        softSkills: ticket.fields.customfield_10147 || '',
       },
       preferableKnowledge: {
-        hardSkills: ticket.fields.customfield_10148,
-        softSkills: ticket.fields.customfield_10149,
+        hardSkills: ticket.fields.customfield_10148 || '',
+        softSkills: ticket.fields.customfield_10149 || '',
       },
-      expectedStartDate: ticket.fields.customfield_10157,
-      title: ticket.fields.summary
+      expectedStartDate: ticket.fields.customfield_10157 || '',
+      title: ticket.fields.summary || ''
     }
+  }
+
+  function getJiraAuthHeader() {
+    return 'Basic ' + new Buffer(data.jiraCredentials.username + ':' + data.jiraCredentials.password).toString('base64');
+  }
+
+  function getJiraApiUrl(ticketNumber) {
+    return data.jiraApi + ticketNumber;
   }
 
   module.exports = {
     getTicketData: getTicketData,
-    findUser: findUser
+    findUser: findUser,
+    getJiraAuthHeader: getJiraAuthHeader,
+    getJiraApiUrl: getJiraApiUrl
   };

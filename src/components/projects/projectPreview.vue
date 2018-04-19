@@ -1,15 +1,15 @@
 <template>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <div class="container-fluid previewContainer">
-      <div><h3 class="ellipsis title">{{project.title}}</h3></div>
+      <div><h4 class="ellipsis title">{{project.title}}</h4></div>
       <div class="body">
-        <h4>{{project.mainTechnology}} - {{project.englishLevel}}</h4>
-        <p class="description ellipsis">{{project.description}}</p>
+        <h5>{{project.mainTechnology}} - {{project.englishLevel}}</h5>
+        <h6>{{project.minPosition}} <span v-if="project.maxPosition"> - {{project.maxPosition}}</span></h6>
       </div>
       <div class="row techs">
         <div class="col-xs-6 techs-box">
           <ul>
-            <li v-for="(tech, index) in skills">{{tech}}</li>
+            <li v-for="tech in skills" :key="tech" v-if="tech">{{tech}}</li>
           </ul>
         </div>
       </div>
@@ -29,8 +29,9 @@
     props: ['project'],
     computed:{
       skills(){
-        if(this.project.mandatoryKnowledge && this.project.mandatoryKnowledge.hardSkills) {
-          return this.project.mandatoryKnowledge.hardSkills.length > 3 ? this.project.mandatoryKnowledge.hardSkills.slice(0,3) : this.project.mandatoryKnowledge.hardSkills;
+        if(this.project.requirements) {
+          let skills = this.project.requirements.split(',');
+          return skills.length > 3 ? skills.slice(0,3) : skills;
         }
         return [];
       }
