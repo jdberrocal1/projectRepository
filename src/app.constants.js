@@ -1,1 +1,1 @@
-export const baseApi = 'http://127.0.0.1:5000/api/v1';
+export const baseApi = '/api/v1';
