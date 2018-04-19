@@ -46,8 +46,13 @@ function findUser(credentials) {
     return 'Basic ' + new Buffer(data.jiraCredentials.username + ':' + data.jiraCredentials.password).toString('base64');
   }
 
+  function getJiraApiUrl(ticketNumber) {
+    return data.jiraApi + ticketNumber;
+  }
+
   module.exports = {
     getTicketData: getTicketData,
     findUser: findUser,
-    getJiraAuthHeader: getJiraAuthHeader
+    getJiraAuthHeader: getJiraAuthHeader,
+    getJiraApiUrl: getJiraApiUrl
   };

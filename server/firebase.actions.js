@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 var db = admin.database();
 
-function saveProjectId(project, callback) {
+function saveProject(project, callback) {
   let projects = db.ref("projects").push();
   return projects.set(
     {
@@ -16,7 +16,9 @@ function parseProjectList(projects) {
   if (!projects) return [];
   let projectListParse = [];
   Object.keys(projects).forEach(key => {
-    projectListParse.push(projects[key].project);
+    let project = projects[key].project;
+    project.fsId = key; // fsId -> firebase identifier
+    projectListParse.push(project);
   });
   return projectListParse;
 }
@@ -34,6 +36,6 @@ function getProjects(firstCall, callback) {
 }
 
 module.exports = {
-  saveProjectId: saveProjectId,
+  saveProject: saveProject,
   getProjects: getProjects
 };

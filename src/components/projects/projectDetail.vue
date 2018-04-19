@@ -1,31 +1,82 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
+    <div v-if="!project">
+      <h3 class="loading">Loading...</h3>
+    </div>
+    <div v-if="project">
     <h3>{{project.title}}</h3>
-    <div class="row">
-      <div class="col-xs-6 col-sm-6 col-md-3">
-        <p><b>Main Technology: </b> {{project.mainTechnology}}</p>
+    <div class="project-detail">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="project.mainTechnology">
+          <label><b>Main Technology:</b></label>
+          <p>{{project.mainTechnology}}</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="project.englishLevel">
+          <label><b>English Level: </b></label>
+          <p>{{project.englishLevel}}</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="startDate">
+          <label><b>Expected Start Date:</b></label>
+          <p>{{startDate}}</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="project.yearsOfExperience">
+          <label><b>Years of Experience: </b></label>
+          <p>{{project.yearsOfExperience}}</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="project.minPosition">
+          <label><b>Min Position: </b></label>
+          <p>{{project.minPosition}}</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4" v-if="project.maxPosition">
+          <label><b>Max Position: </b></label>
+          <p>{{project.maxPosition}}</p>
+        </div>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-3">
-        <p><b>English Level: </b> {{project.englishLevel}}</p>
+      <div class="row" v-if="project.taskDescription">
+        <div class="col-xs-12">
+          <p><b>Task Description: </b></p>
+          <p class="description">{{project.taskDescription}}</p>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <p><b>Min Position: </b> {{project.minPosition}}</p>
+      <div class="row" v-if="project.requirements">
+        <div class="col-xs-12">
+          <p><b>Requirements: </b></p>
+          <p>{{project.requirements}}</p>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3" v-if="project.maxPosition">
-        <p><b>Max Position: </b> {{project.maxPosition}}</p>
+      <div class="row" v-if="project.mandatoryKnowledge">
+        <div class="col-xs-12">
+          <p><b>Mandatory Knowledge: </b></p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <label><b>Hard Skills: </b></label>
+          <p>{{project.mandatoryKnowledge.hardSkills}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6" v-if="project.mandatoryKnowledge.softSkills">
+          <label><b>Soft Skills: </b></label>
+          <p>{{project.mandatoryKnowledge.softSkills}}</p>
+        </div>
+      </div>
+      <div class="row" v-if="project.preferableKnowledge">
+        <div class="col-xs-12">
+          <p><b>Preferable Knowledge: </b></p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <label><b>Hard Skills: </b></label>
+          <p>{{project.preferableKnowledge.hardSkills}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6" v-if="project.preferableKnowledge.softSkills">
+          <label><b>Soft Skills: </b></label>
+          <p>{{project.preferableKnowledge.softSkills}}</p>
+        </div>
+      </div>
+      <div class="row" v-if="project.description">
+        <div class="col-xs-12">
+          <label><b>Preferable Knowledge: </b></label>
+          <p>{{project.description}}</p>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p><b>Task Description: </b></p>
-        <p class="description">{{project.taskDescription}}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <p><b>Requirements: </b></p>
-        <p>{{project.requirements}}</p>
-      </div>
     </div>
   </div>
 </template>
@@ -34,24 +85,26 @@
 import axios from 'axios';
 import { baseApi } from '../../app.constants';
 export default {
-  props: ['id'],
+  props: ['id', 'projectAux'],
   data() {
     return {
-      project: []
+      project: null
     }
   },
   computed:{
     startDate() {
       if (this.project.expectedStartDate) {
         let date = new Date(this.project.expectedStartDate);
-        return `${date.getDate()}/${date.getMoth()}/${date.getFullYear()}`;
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
       }
       return '';
     }
   },
   created(){
-    this.$Progress.start();
-    axios.get(`${baseApi}/projects/${this.$route.params.id}`)
+    if(!this.projectAux){
+      this.$Progress.start();
+      //TODO: get project by fsId, change api before
+      axios.get(`${baseApi}/projects/${this.$route.params.id}`)
         .then(response => {
           let data = response.data;
           this.project = data;
@@ -63,12 +116,20 @@ export default {
         .catch(error => {
           this.$Progress.fail();
         });
+    } else {
+      this.project = this.projectAux;
+    }
   }
 }
 </script>
 
 <style scoped>
-.description {
+.project-detail {
   text-align: justify;
+  margin-top: 30px;
+}
+
+.project-detail .row{
+  margin-bottom: 15px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid" v-if="!existProject">
+    <div class="container" v-if="!existProject">
       <h4 class="justifyText">To import projects from Jira please type in the ticket number!</h4>
       <div class="row searchContainer">
         <div class="col-xs-12">
@@ -17,47 +17,16 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid" v-if="existProject">
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>{{project.title}}</h4>
-        </div>
-        <div class="col-xs-12">
-          <p><b>Main Technology:</b> {{project.mainTechnology}}</p>
-        </div>
-        <div class="col-xs-12">
-          <p><b>Minimum Position:</b> {{project.minPosition}}</p>
-        </div>
-        <div class="col-xs-12">
-          <p><b>Maximun Position:</b> {{project.maxPosition}}</p>
-        </div>
-        <div class="col-xs-12">
-          <p><b>Years Of Experience:</b> {{project.yearsOfExperience}}</p>
-        </div>
-        <div class="col-xs-12">
-          <p><b>English Level:</b> {{project.englishLevel}}</p>
-        </div>
-        <div class="col-xs-12">
-          <b>Requirements:</b>
-          <p> {{project.requirements}}</p>
-        </div>
-        <div class="col-xs-12" v-if="project.preferableKnowledge.softSkills || project.preferableKnowledge.hardSkills">
-          <b>Mandatory Knowledge:</b>
-          <p><b>-Hard Skills:</b>{{project.mandatoryKnowledge.hardSkills}}</p>
-          <p v-if="project.mandatoryKnowledge.softSkills"><b>-Soft Skills:</b>{{project.mandatoryKnowledge.softSkills}}</p>
-        </div>
-        <div class="col-xs-12" v-if="project.preferableKnowledge.softSkills || project.preferableKnowledge.hardSkills">
-          <b>Preferable Knowledge:</b>
-          <p><b>-Hard Skills:</b>{{project.preferableKnowledge.hardSkills}}</p>
-          <p v-if="project.preferableKnowledge.softSkills"><b>-Soft Skills:</b>{{project.preferableKnowledge.softSkills}}</p>
-        </div>
-      </div>
+    <div class="container" v-if="existProject">
+      <project-detail :projectAux="project" :key="project.id"></project-detail>
       <div class="row">
         <div class="col-xs-12">
           <button @click="cancel" class="btn cancel">Cancel</button>
           <button @click="saveProject" class="btn success">Continue</button>
         </div>
       </div>
+    </div>
+    <div class="container">
       <div class="row" v-if="error.exist">
         <div class="col-xs-12 errorContainer">
           <div class="alert alert-danger alert-dismissible" role="alert">
@@ -71,7 +40,13 @@
 </template>
 
 <script>
+import projectDetail from './projectDetail.vue';
+import axios from 'axios';
+import { baseApi } from '../../app.constants';
 export default {
+  components: {
+    projectDetail: projectDetail
+  },
   data() {
     return {
       ticketNumber: '',
@@ -84,9 +59,10 @@ export default {
     importProject() {
       if (this.ticketNumber.length) {
         this.$Progress.start();
-        this.$http.get('/import/' + this.ticketNumber)
+        this.error = {};
+        axios.get(`${baseApi}/import/${this.ticketNumber}`)
           .then(response => {
-            let data = response.body;
+            let data = response.data;
             if (data) {
               this.existProject = true;
               this.project = data;
@@ -95,7 +71,10 @@ export default {
             this.$Progress.finish();
           })
           .catch(error => {
-            console.log(error);
+            this.error = {
+                exist: true,
+                message: 'Ticket not found, please try again!'
+              };
             this.$Progress.fail();
           });
       }
@@ -104,18 +83,19 @@ export default {
       this.project = {};
       this.existProject = false;
       this.ticketNumber = '';
+      this.error = {};
     },
     saveProject() {
-      debugger;
       if (this.ticketNumber.length) {
+        this.error = {};
         this.$Progress.start();
         let data = {
-          id: this.ticketNumber
+          project: this.project
         };
 
-        this.$http.post('/import', data)
+        axios.post(`${baseApi}/import`, this.project)
           .then(response => {
-            let data = response.body;
+            let data = response.data;
             if (data && !data.haveErrors) {
               this.$router.push({ path: '/projects' });
             } else {
@@ -127,7 +107,10 @@ export default {
             this.$Progress.finish();
           })
           .catch(error => {
-            console.log(error);
+            this.error = {
+                exist: true,
+                message: 'Something went wrong, please try again!'
+              };
             this.$Progress.fail();
           });
       }

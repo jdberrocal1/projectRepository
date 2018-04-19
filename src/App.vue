@@ -35,4 +35,9 @@ export default {
   .btn.cancel{
     background-color: #EF4023;
   }
+
+  .loading{
+    text-align: center;
+    margin-top: 25%;
+  }
 </style>
