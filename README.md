@@ -29,4 +29,4 @@ Users and credentials are hardcoded on `server/data.js`.
 ## TODO
 * Delete Project (FE and BE)
 * Refact get project by id, to use fbId to avoid searching through all projects (FE and BE)
-* Colapse hamburger menu on mobile views when option is selected (FE)
+* Close hamburger menu on mobile views when option is selected (FE)
