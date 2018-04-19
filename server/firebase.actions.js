@@ -17,7 +17,7 @@ function parseProjectList(projects) {
   let projectListParse = [];
   Object.keys(projects).forEach(key => {
     let project = projects[key].project;
-    project.fsId = key; // fsId -> firebase identifier
+    project.fbId = key; // fbId -> firebase identifier
     projectListParse.push(project);
   });
   return projectListParse;
