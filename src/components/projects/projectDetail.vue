@@ -44,11 +44,11 @@
           <p>{{project.requirements}}</p>
         </div>
       </div>
-      <div class="row" v-if="project.mandatoryKnowledge">
+      <div class="row" v-if="project.mandatoryKnowledge && (project.mandatoryKnowledge.hardSkills || project.mandatoryKnowledge.softSkills)">
         <div class="col-xs-12">
           <p><b>Mandatory Knowledge: </b></p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-6" v-if="project.mandatoryKnowledge.hardSkills">
           <label><b>Hard Skills: </b></label>
           <p>{{project.mandatoryKnowledge.hardSkills}}</p>
         </div>
@@ -57,11 +57,11 @@
           <p>{{project.mandatoryKnowledge.softSkills}}</p>
         </div>
       </div>
-      <div class="row" v-if="project.preferableKnowledge">
+      <div class="row" v-if="project.preferableKnowledge && (project.preferableKnowledge.hardSkills || project.preferableKnowledge.softSkills)">
         <div class="col-xs-12">
           <p><b>Preferable Knowledge: </b></p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-6" v-if="project.preferableKnowledge.hardSkills">
           <label><b>Hard Skills: </b></label>
           <p>{{project.preferableKnowledge.hardSkills}}</p>
         </div>

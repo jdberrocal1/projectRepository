@@ -1,15 +1,19 @@
 <template>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
     <div class="container-fluid previewContainer">
-      <div><h4 class="ellipsis title">{{project.title}}</h4></div>
+      <div>
+        <router-link :to="{name: 'projectDetail', params: { id: project.id }}" class="ellipsis title clickable" tag="h4">
+            {{project.title}}
+          </router-link>
+      </div>
       <div class="body">
         <h5>{{project.mainTechnology}} - {{project.englishLevel}}</h5>
         <h6>{{project.minPosition}} <span v-if="project.maxPosition"> - {{project.maxPosition}}</span></h6>
       </div>
-      <div class="row techs">
-        <div class="col-xs-6 techs-box">
+      <div class="row techs" v-if="skills.length">
+        <div class="col-xs-7 col-sm-8 techs-box">
           <ul>
-            <li v-for="tech in skills" :key="tech" v-if="tech">{{tech}}</li>
+            <li v-for="tech in skills" :key="tech" v-if="tech" class="ellipsis"> - {{tech}}</li>
           </ul>
         </div>
       </div>
@@ -45,7 +49,7 @@
     border-radius: 0px;
     color: white;
     min-height: 240px;
-    margin: 5px 0;
+    margin: 15px 0;
     padding: 15px;
     box-shadow: 0px 5px 10px #888888;
     width: 100%;
@@ -61,7 +65,7 @@
 
   .previewContainer .footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     right: 15px;
     margin-top: 10px;
   }
@@ -83,6 +87,12 @@
     border-left: 0;
     padding-top: 10px;
   }
+
+  .techs-box ul{
+    padding-left: 0;
+  }
+
+  
 
    .previewContainer .ellipsis {
     width: 100%;

@@ -40,4 +40,8 @@ export default {
     text-align: center;
     margin-top: 25%;
   }
+
+  .clickable {
+    cursor: pointer;
+  }
 </style>

@@ -40,7 +40,12 @@ export default {
   computed: {
     filteredProjects() {
       return this.projects.filter(project => {
-        return project.title.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || project.mainTechnology.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+        return project.title.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by title
+                project.mainTechnology.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by mainTechnology
+                project.maxPosition.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by maxPosition
+                project.minPosition.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by minPosition
+                project.requirements.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by requirements
+                project.englishLevel.toLowerCase().indexOf(this.search.toLowerCase()) > -1 // search by englishLevel
       });
     }
   },
