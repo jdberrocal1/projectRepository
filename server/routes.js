@@ -87,6 +87,11 @@ module.exports = function (app) {
     });
   });
 
-  // TODO: create a delete route to remove projects from FB
-
+  // delete project from firebase
+  app.delete(`${apiUrlBase}/projects/:id`, function (req, res) {
+    let id = req.params.id;
+    firebaseActions.removeProjects(id, function(result) {
+      res.json(result);
+    });
+  });
 };

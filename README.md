@@ -29,10 +29,10 @@ Users and credentials are hardcoded on `server/data.js`.
 ## Deploy
 * Change baseApi constant on `src/app.constants.js` to `/api/v1`
 * npm run build (this will generate a build folder)
+* remove Access-Control-Allow-Origin config from `server.js`
 * deploy must contain: server folder, dist folder, index.html, package.json and server.js
 
 ## TODO
-* Delete Project (FE and BE)
 * Refact get project by id, to use fbId to avoid searching through all projects (FE and BE)
 * Close hamburger menu on mobile views when option is selected (FE)
-* Search project by more parameters, currently is searching just by title and main technology
+* Create an option to let admin know "I'm interested" (FE and BE)

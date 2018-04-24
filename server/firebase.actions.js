@@ -35,7 +35,14 @@ function getProjects(firstCall, callback) {
   });
 }
 
+async function removeProjects(project, callback) {
+  let projects = db.ref("projects");
+  let result = await projects.child(project).remove(); // TODO: check for errors (error handling)
+  callback(true);
+}
+
 module.exports = {
   saveProject: saveProject,
-  getProjects: getProjects
+  getProjects: getProjects,
+  removeProjects: removeProjects
 };
