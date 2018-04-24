@@ -45,6 +45,8 @@ export default {
                 project.maxPosition.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by maxPosition
                 project.minPosition.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by minPosition
                 project.requirements.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by requirements
+                project.client.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by client
+                project.office.toLowerCase().indexOf(this.search.toLowerCase()) > -1 || // search by client
                 project.englishLevel.toLowerCase().indexOf(this.search.toLowerCase()) > -1 // search by englishLevel
       });
     }

@@ -7,7 +7,7 @@
           </router-link>
       </div>
       <div class="body">
-        <h5>{{project.mainTechnology}} - {{project.englishLevel}}</h5>
+        <h5>{{project.mainTechnology}} - {{project.englishLevel}} - {{project.office}}</h5>
         <h6>{{project.minPosition}} <span v-if="project.maxPosition"> - {{project.maxPosition}}</span></h6>
       </div>
       <div class="row techs" v-if="skills.length">

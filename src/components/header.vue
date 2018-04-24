@@ -13,7 +13,7 @@
         </router-link>
       </div>
 
-      <div class="collapse navbar-collapse" :class="{'in': showMenu}">
+      <div class="collapse navbar-collapse" :class="{'in': showMenu}" @click="showMenu = false">
         <ul class="nav navbar-nav">
           <router-link to="/projects/" activeClass="active" tag="li">
             <a>Projects</a>

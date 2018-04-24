@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <div class="row" v-if="isUserLogged">
+      <div class="row" v-if="isUserLogged && isDetailsView">
         <div class="col-xs-12">
           <button class="btn cancel pull-right" @click="sureDelete">Remove Project</button>
         </div>
@@ -93,7 +93,8 @@ export default {
   props: ['id', 'projectAux'],
   data() {
     return {
-      project: null
+      project: null,
+      isDetailsView: true
     }
   },
   computed:{
@@ -126,6 +127,7 @@ export default {
         });
     } else {
       this.project = this.projectAux;
+      this.isDetailsView = false;
     }
   },
   methods: {

@@ -28,11 +28,12 @@ Users and credentials are hardcoded on `server/data.js`.
 
 ## Deploy
 * Change baseApi constant on `src/app.constants.js` to `/api/v1`
-* npm run build (this will generate a build folder)
-* remove Access-Control-Allow-Origin config from `server.js`
-* deploy must contain: server folder, dist folder, index.html, package.json and server.js
+* `npm run build` (this will generate a build folder)
+* Remove Access-Control-Allow-Origin config from `server.js`
+* Deploy must contain: server folder, dist folder, index.html, package.json and server.js
 
 ## TODO
 * Refact get project by id, to use fbId to avoid searching through all projects (FE and BE)
-* Close hamburger menu on mobile views when option is selected (FE)
 * Create an option to let admin know "I'm interested" (FE and BE)
+* Sort projects by client (default)
+* Filter projects by office center (using a combobox or something similar)

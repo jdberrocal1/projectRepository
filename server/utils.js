@@ -38,7 +38,9 @@ function findUser(credentials) {
         softSkills: ticket.fields.customfield_10149 || '',
       },
       expectedStartDate: ticket.fields.customfield_10157 || '',
-      title: ticket.fields.summary || ''
+      title: ticket.fields.summary || '',
+      client: ticket.fields.customfield_10130 || '',
+      office: ticket.fields.customfield_10170 || ''
     }
   }
 
