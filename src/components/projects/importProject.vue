@@ -17,8 +17,8 @@
         </div>
       </div>
     </div>
+    <project-detail :projectAux="project" :key="project.id" v-if="existProject"></project-detail>
     <div class="container" v-if="existProject">
-      <project-detail :projectAux="project" :key="project.id"></project-detail>
       <div class="row">
         <div class="col-xs-12">
           <button @click="cancel" class="btn cancel">Cancel</button>
