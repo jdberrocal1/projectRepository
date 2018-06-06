@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "avantica-project-repository",
+  "private_key_id": "bed91ebab2896a5480efef6c873ed35eba2d2dbc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCxCNwZmaemtlNK\n2GSo1eh/ZzYfVFd3igjbiziU+KRHKlBKZ751nuxWXCRyK0JMqP6EeF20nMBCyndl\nBxZFUo7JjS2yIKxgi4oPhSIcBPzQH4hWBk5pXRuSte0ZEw7k/JEIFMpYJKqqR+f8\nE9NojMfPqhaMuIc6MtaP9eKzt9UsDSWBiLSK6PftR1chq3JHzXcZfcNbqBdv1DXr\nyHQJHSqgSu9FA+P6NGTbaeFYCZSK6liZ0mD6zueeF6FNmlhnD9TyplJBCzh6WRXR\nobCPWVzcJxvys4ILEuxvg3/DrkxQfCqveyxkqG/iQOjCZFg4+McMRSIP9Jr9rhfR\nzUjvAcgZAgMBAAECggEAWHN8xK2ovfrKktKbOF/n0f/XYr/ZE7i7xDVDB+tS6NuT\nUhmTZ2EH4/4Vl5VVgsfMopMg/mRzCuvty2RHFEuzW7BV7HG2rmYJjMePy0ASsEmQ\n7Kop8yq55AtRcv26q14leEwq7O8k9f8HQUMGlW4BRxhMO/LWXZWY7kSECBcJQwBZ\nJCvJxJoXmoviDRzjGrgg1kpj5MkhMmRcMqTKRG+g+jJKY0f63Bzdkg0z1EyIt65D\nLrUHwEaUyJzO4c+Hvpw2wolB/VxIelvmuf7swPiKIafZvB2wtG8KC9wsuCB3Yg64\n6ThoJEUmXwRNf0N6UmUHgZRJXmxEzrvUIBvWsN/PIQKBgQDmJeamupHTw0OgKnZI\nqcR2o7Li1CGdMFiTMr0KMOQOPUYU7QxmNGJJvFo5anIo6BS1Olv34UjIqY4ZVgEl\noJMSecwyCa2ZPbafbTJMn540GpE2GXaWxegZHJ6SFwUUngNgd0fbYAcs4c6q3066\n7eqJ1+CNYNtiWbUpElzqaBxlzwKBgQDE66MyJl+NVHSy9HbFfAwp8Lt5RdAcFsjk\nB0gbZxAZ3uWLTgDjQKmwLSzBn2gIt9uexKj1qURog/E8bDI8XADggPudcZv/QVqW\nvrUDfds4kCiqljF/fLXAaYy7+r18elINBNcM/oWIhSXGhZIheBf7Os4yl0l7OnPg\nFNBy8UxVlwKBgAoDDhSkuyFONkvqbPjeQcizeF27wraW2tOUenrOA63G5pyUb1ym\n3Lu+cOJcihjTd8smfce7yjHIhoD9p9EeOiesmsB2gVHQSHiJBI4mx3gWy8hhtTH7\n7AvjndZXIAZ0lUsGBV86vzUpoZb3XfJt1S0n8gHUe9a8dlASF26vFsUrAoGBALHS\ni9tklZK9emiDo6FwBFf3QIQhy+0hkiWAgdfk+MAz7RsfxGNy6Ajksm7icQK2bMdx\nlZXJVbH/u98xYSfqeQxCzXR+vD0DmjdYXYOaqlTosSBiYq5aQpJPfjveEDCREPka\nrsvYJ2OBwPwFcFFy7kz67Gr4/O0ferYWdanmRmVfAoGBAI/hA3Mj91q+c8+APfsQ\nIb3metNIRSeTSYW9GDUitML9IO/al21o/vpvyeh4rR3iWBRTXPn/MYDnp4C3P7NR\n8kRB2KUbFDW1IWcfwHOzWKD0D6RAL22lX0D9MRABozr1u5kcvAky5OMmLdeHKDZ7\nbeVrHZbID9LkUkInPpzpwVc9\n-----END PRIVATE KEY-----\n",
+  "client_email": "project-repository-server@avantica-project-repository.iam.gserviceaccount.com",
+  "client_id": "116333275810153408612",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/project-repository-server%40avantica-project-repository.iam.gserviceaccount.com"
+}
